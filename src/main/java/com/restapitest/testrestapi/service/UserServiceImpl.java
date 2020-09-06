@@ -1,0 +1,23 @@
+package com.restapitest.testrestapi.service;
+
+import com.restapitest.testrestapi.entity.User;
+import com.restapitest.testrestapi.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class UserServiceImpl implements UserService{
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    public User getUserById(Integer id) {
+        return userRepository.findById(id).get();
+    }
+
+    @Override
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
+}
